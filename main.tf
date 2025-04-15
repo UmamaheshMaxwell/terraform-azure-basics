@@ -1,3 +1,4 @@
+#https://medium.com/@treesakul/how-to-store-terraform-state-remotely-in-azure-storage-aa44ee894c63
 resource "azurerm_resource_group" "tfstate" {
   name     = "terraform-group"
   location = "East US"
@@ -16,4 +17,8 @@ resource "azurerm_storage_container" "tfstate" {
   name                  = "tfstate"
   storage_account_name  = azurerm_storage_account.tfstate.name
   container_access_type = "blob"
+}
+
+module "create-vm" {
+    source = "./create-vm"
 }

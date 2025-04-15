@@ -1,0 +1,53 @@
+version: '3'
+
+tasks:
+  setup:
+    cmds: 
+     - |
+        task init
+        task plan
+        task apply
+    silent: true
+
+  default:
+    desc: "Terraform Init"
+    cmds:
+      - |
+        task init
+
+    silent: true
+
+  init:
+    desc: "Terraform Init"
+    cmds:
+      - |
+        terraform init -backend-config="backend.hcl"
+    silent: true
+
+  reconfigure:
+    desc: "Terraform Init"
+    cmds:
+      - |
+        terraform init -reconfigure -backend-config="backend.hcl"
+    silent: true
+
+  plan:
+    desc: "Terraform Plan "
+    cmds:
+      - |
+        terraform plan
+    silent: true
+
+  apply:
+    desc: "Terraform Apply"
+    cmds:
+      - |
+        terraform apply 
+    silent: true
+
+  destroy:
+    desc: "Terraform Destroy"
+    cmds:
+      - |
+        terraform destroy --auto-approve
+    silent: true
